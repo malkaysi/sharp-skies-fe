@@ -1,3 +1,9 @@
+import FileUpload from "@/features/image-editor/components/file-upload";
+
 export default function EditorPage() {
-  return <div> Editor Page</div>;
+  return (
+    <>
+      <FileUpload />
+    </>
+  );
 }
