@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./components/ui/header/header";
+import Header from "./components/ui/layout/header/header";
 import Shell from "./components/ui/layout/shell";
 import EditorPage from "./pages/editor-page/editor-page";
 
