@@ -36,7 +36,8 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
             type="file"
             accept="image/*"
             onChange={handleFileUpload}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" // Covers full area, invisible
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            title=""
           />
           <CloudUploadIcon className="size-8 mb-2" />
           <p className="text-gray-600">Upload Image</p>
