@@ -1,11 +1,9 @@
-import FileUpload from "@/features/image-editor/components/file-upload";
+import ImageEditor from "@/features/image-editor/image-editor";
 
 export default function EditorPage() {
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen">
-        <FileUpload />
-      </div>
+      <ImageEditor />
     </>
   );
 }
