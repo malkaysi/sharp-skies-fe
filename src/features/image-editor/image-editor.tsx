@@ -19,6 +19,10 @@ export default function ImageEditor() {
     setSelectedImage(file);
   }
 
+  function onBack() {
+    setSelectedImage(null);
+  }
+
   return (
     <div className="flex items-center justify-center h-full min-h-0">
       {!selectedImage ? (
@@ -27,6 +31,7 @@ export default function ImageEditor() {
         <ImagePreview
           imageSrc={imagePreviewUrl ?? ""}
           fileName={selectedImage.name}
+          onBack={onBack}
         />
       )}
     </div>
