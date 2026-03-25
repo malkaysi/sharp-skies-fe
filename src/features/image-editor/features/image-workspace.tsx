@@ -32,8 +32,12 @@ export default function ImageWorkspace({
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[3fr_1fr]">
         <ImagePreview imageSrc={imageSrc} fileName={fileName} />
 
-        <div className="flex flex-col gap-4 p-2 rounded-lg border border-muted/30">
-          <h4 className="text-sm font-semibold">Adjust Image</h4>
+        <div className="flex flex-col gap-4 self-center rounded-2xl border border-muted/40 bg-background/80 p-4 shadow-sm">
+          <div className="border-b border-muted/30 pb-2">
+            <h4 className="text-sm font-semibold tracking-tight">
+              Adjust Image
+            </h4>
+          </div>
           <AdjustmentSliders
             settings={settings}
             onSettingChange={onSettingChange}
