@@ -1,4 +1,4 @@
-import type { SharpenSettings } from "@/features/types/image-editor";
+import type { SharpenSettings } from "@/features/image-editor/types/image-editor";
 
 export const DEFAULT_SHARPEN_SETTINGS: SharpenSettings = {
   sigma: 1.2,
