@@ -32,15 +32,21 @@ export default function SliderField({
         </span>
       </div>
 
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full"
-      />
+      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
+        <span className="text-[11px] text-muted-foreground">{min}</span>
+
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          className="w-full"
+        />
+
+        <span className="text-[11px] text-muted-foreground">{max}</span>
+      </div>
     </div>
   );
 }
