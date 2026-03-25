@@ -21,11 +21,7 @@ export default function ImagePreview({
         </Button>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[3fr_1fr]">
-        <div className="flex items-center justify-center">
-          <div className="w-full max-w-full">
-            <SelectedImage imageSrc={imageSrc} fileName={fileName} />
-          </div>
-        </div>
+        <SelectedImage imageSrc={imageSrc} fileName={fileName} />
 
         <div className="flex flex-col gap-4 p-2 rounded-lg border border-muted/30">
           <h4 className="text-sm font-semibold">Adjust Image</h4>
