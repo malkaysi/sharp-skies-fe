@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import DropZone from "./components/drop-zone";
-import ImageWorkspace from "./components/image-workspace";
+import DropZone from "./features/drop-zone";
+import ImageWorkspace from "./features/image-workspace";
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
 import type { SharpenSettings } from "./types/image-editor";
 

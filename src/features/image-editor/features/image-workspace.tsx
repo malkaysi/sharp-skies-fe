@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import ImagePreview from "./image-preview";
+import ImagePreview from "../components/image-preview";
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
-import AdjustmentSliders from "./adjustment-sliders";
+import AdjustmentSliders from "../components/adjustment-sliders";
 
 type ImageWorkspaceProps = {
   imageSrc: string;
