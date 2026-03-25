@@ -1,16 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import ImagePreview from "./image-preview";
+import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
+import AdjustmentSliders from "./adjustment-sliders";
 
 type ImageWorkspaceProps = {
   imageSrc: string;
   fileName?: string;
   onBack: () => void;
+  settings: typeof DEFAULT_SHARPEN_SETTINGS;
+  onSettingChange: (
+    key: keyof typeof DEFAULT_SHARPEN_SETTINGS,
+    value: number,
+  ) => void;
 };
 export default function ImageWorkspace({
   imageSrc,
   fileName,
   onBack,
+  settings,
+  onSettingChange,
 }: ImageWorkspaceProps) {
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
@@ -25,30 +34,9 @@ export default function ImageWorkspace({
 
         <div className="flex flex-col gap-4 p-2 rounded-lg border border-muted/30">
           <h4 className="text-sm font-semibold">Adjust Image</h4>
-          {/* sliders and control rows */}
-          <label className="text-xs font-medium">Brightness</label>
-          <input
-            type="range"
-            min="0"
-            max="200"
-            defaultValue="100"
-            className="w-full"
-          />
-          <label className="text-xs font-medium">Contrast</label>
-          <input
-            type="range"
-            min="0"
-            max="200"
-            defaultValue="100"
-            className="w-full"
-          />
-          <label className="text-xs font-medium">Saturation</label>
-          <input
-            type="range"
-            min="0"
-            max="200"
-            defaultValue="100"
-            className="w-full"
+          <AdjustmentSliders
+            settings={settings}
+            onSettingChange={onSettingChange}
           />
         </div>
       </div>
