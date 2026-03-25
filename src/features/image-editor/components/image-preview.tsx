@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import SelectedImage from "./selected-image";
 
 type ImagePreviewProps = {
   imageSrc: string;
@@ -13,18 +14,7 @@ export default function ImagePreview({
 }: ImagePreviewProps) {
   return (
     <div className="overflow-hidden rounded-2xl">
-      <p className="text-sm font-medium">Preview</p>
-      {fileName ? (
-        <p className="text-sm text-muted-foreground">{fileName}</p>
-      ) : null}
-
-      <div className="flex items-center justify-center py-4">
-        <img
-          src={imageSrc}
-          alt={fileName ?? "Image Preview"}
-          className="max-h-[70vh] w-full rounded-xl object-contain"
-        />
-      </div>
+      <SelectedImage imageSrc={imageSrc} fileName={fileName} />
       <div className="flex justify-start">
         <Button onClick={onBack}>
           <ArrowLeft />
