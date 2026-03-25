@@ -1,3 +1,5 @@
+import SliderTooltip from "./slider-tooltip";
+
 type SliderFieldProps = {
   label: string;
   description?: string;
@@ -20,11 +22,9 @@ export default function SliderField({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <div>
+        <div className="flex items-center gap-1">
           <p className="text-xs font-medium">{label}</p>
-          {description && (
-            <p className="text-[11px] text-muted-foreground">{description}</p>
-          )}
+          {description && <SliderTooltip description={description} />}
         </div>
 
         <span className="text-xs text-muted-foreground">

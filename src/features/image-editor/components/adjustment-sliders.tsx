@@ -13,8 +13,6 @@ export default function AdjustmentSliders({
 }: AdjustmentSlidersProps) {
   return (
     <div className="flex flex-col gap-4 rounded-lg border border-muted/30 p-4">
-      <h4 className="text-sm font-semibold">Sharpening</h4>
-
       {Object.entries(SHARPEN_SLIDER_CONFIG).map(([key, config]) => (
         <SliderField
           key={key}
