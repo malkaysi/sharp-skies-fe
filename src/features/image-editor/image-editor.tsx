@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import DropZone from "./components/drop-zone";
-import ImagePreview from "./components/image-preview";
+import ImageWorkspace from "./components/image-workspace";
 
 export default function ImageEditor() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -28,7 +28,7 @@ export default function ImageEditor() {
       {!selectedImage ? (
         <DropZone handleSelectImage={handleSelectImage} />
       ) : (
-        <ImagePreview
+        <ImageWorkspace
           imageSrc={imagePreviewUrl ?? ""}
           fileName={selectedImage.name}
           onBack={onBack}
