@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
 import ImagePreview from "../components/image-preview";
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
 import AdjustmentSliders from "../components/adjustment-sliders";
+import BackButton from "../components/back-button";
 
 type ImageWorkspaceProps = {
   imageSrc: string;
@@ -24,13 +23,8 @@ export default function ImageWorkspace({
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
       <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-[3fr_1fr]">
-        <div className="flex h-full min-h-200 flex-col items-start">
-          <div className="mb-4">
-            <Button variant="ghost" onClick={onBack} className="text-sm">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
-            </Button>
-          </div>
+        <div className="flex h-full min-h-215 flex-col items-start">
+          <BackButton onBack={onBack} />
           <div className="flex w-full flex-1 items-center justify-center">
             <ImagePreview imageSrc={imageSrc} fileName={fileName} />
           </div>
