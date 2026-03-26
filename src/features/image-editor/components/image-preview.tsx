@@ -7,7 +7,7 @@ export default function ImagePreview({
   fileName,
 }: ImagePreviewProps) {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-centerd">
       <div className="w-full max-w-full">
         <p className="text-sm font-medium">Preview</p>
         {fileName ? (
@@ -18,7 +18,7 @@ export default function ImagePreview({
           <img
             src={imageSrc}
             alt={fileName ?? "Image Preview"}
-            className="max-h-[70vh] w-full rounded-xl object-contain"
+            className="max-h-[70vh] w-full max-w-[96%] rounded-xl object-contain"
           />
         </div>
       </div>
