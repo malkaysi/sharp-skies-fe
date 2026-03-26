@@ -23,7 +23,6 @@ export default function ImageWorkspace({
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
       <div className="grid h-[calc(100vh-4rem)] grid-cols-1 gap-4 md:grid-cols-[3fr_1fr]">
-        {/* Left column: now has real height from the grid */}
         <div className="relative overflow-hidden">
           <div className="absolute left-0 top-0 z-10">
             <BackButton onBack={onBack} />
@@ -33,7 +32,6 @@ export default function ImageWorkspace({
           </div>
         </div>
 
-        {/* Right column */}
         <div className="flex w-full max-w-85 flex-col gap-4 self-center justify-self-center rounded-2xl border border-muted/40 bg-background/80 p-4 shadow-sm">
           <AdjustmentSliders
             settings={settings}
