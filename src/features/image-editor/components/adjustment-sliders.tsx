@@ -12,7 +12,7 @@ export default function AdjustmentSliders({
   onSettingChange,
 }: AdjustmentSlidersProps) {
   return (
-    <div className="flex flex-col gap-4 rounded-lg border border-muted/30 p-4">
+    <div className="flex flex-col gap-4 rounded-lg p-4">
       {Object.entries(SHARPEN_SLIDER_CONFIG).map(([key, config]) => (
         <SliderField
           key={key}
