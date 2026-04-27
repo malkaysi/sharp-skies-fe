@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DropZone from "../image-editor/features/drop-zone";
+import DropZone from "./features/drop-zone";
 import WorkflowToggle, { type Workflow } from "./features/workflow-toggle";
 
 type ImageUploadProps = {
