@@ -1,9 +1,9 @@
-import DropZone from "@/features/image-editor/features/drop-zone";
+import ImageUpload from "@/features/image-upload/image-upload";
 
 type UploadPageProps = {
   handleSelectImage: (file: File) => void;
 };
 
 export default function UploadPage({ handleSelectImage }: UploadPageProps) {
-  return <DropZone handleSelectImage={handleSelectImage} />;
+  return <ImageUpload handleSelectImage={handleSelectImage} />;
 }
