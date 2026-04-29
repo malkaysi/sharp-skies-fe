@@ -98,7 +98,9 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
       </div>
 
       {error && (
-        <p className="mt-2 text-center text-xs text-destructive">{error}</p>
+        <p className="mt-2 pt-2 text-center text-xs text-destructive">
+          {error}
+        </p>
       )}
 
       <input
