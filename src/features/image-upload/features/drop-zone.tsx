@@ -6,16 +6,32 @@ type DropZoneProps = {
 };
 
 const FORMAT_TAGS = [".tiff", ".png", ".jpg"];
+const ACCEPTED_FORMATS = ["image/tiff", "image/png", "image/jpeg"];
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
 export default function DropZone({ handleSelectImage }: DropZoneProps) {
   const [isDragOver, setIsDragOver] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  function selectFile(file: File) {
+    if (!ACCEPTED_FORMATS.includes(file.type)) {
+      setError("Unsupported file format.");
+      return;
+    }
+    if (file.size > MAX_FILE_SIZE) {
+      setError("File exceeds 20 MB limit.");
+      return;
+    }
+    setError(null);
+    handleSelectImage(file);
+  }
 
   function handleDrop(event: React.DragEvent<HTMLDivElement>) {
     event.preventDefault();
     setIsDragOver(false);
     const files = event.dataTransfer.files;
     if (!files || files.length === 0) return;
-    handleSelectImage(files[0]);
+    selectFile(files[0]);
   }
 
   function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
@@ -30,7 +46,7 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
   function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
     if (!files || files.length === 0) return;
-    handleSelectImage(files[0]);
+    selectFile(files[0]);
   }
 
   return (
@@ -41,9 +57,11 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
         onDragLeave={handleDragLeave}
         onClick={() => document.getElementById("file-input")?.click()}
         className={`flex aspect-video cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border border-dashed bg-card transition-all ${
-          isDragOver
-            ? "scale-[1.01] border-primary bg-primary/5"
-            : "border-border hover:border-primary/35"
+          error
+            ? "border-destructive bg-destructive/5"
+            : isDragOver
+              ? "scale-[1.01] border-primary bg-primary/5"
+              : "border-border hover:border-primary/35"
         }`}
       >
         <div
@@ -63,7 +81,7 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
             Drop your image here or <span className="text-primary">browse</span>
           </p>
           <p className="text-xs text-muted-foreground/60">
-            TIFF, PNG, or JPEG up to 200 MB
+            TIFF, PNG, or JPEG up to 20 MB
           </p>
         </div>
 
@@ -78,6 +96,10 @@ export default function DropZone({ handleSelectImage }: DropZoneProps) {
           ))}
         </div>
       </div>
+
+      {error && (
+        <p className="mt-2 text-center text-xs text-destructive">{error}</p>
+      )}
 
       <input
         type="file"
