@@ -227,17 +227,17 @@ code {
 }
 
 .dark {
-  --background: #0a0c10;
+  --background: oklch(17.729% 0.01337 264.168);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.212 0.019 322.12);
+  --card: oklch(19.59% 0.015 266.81);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.212 0.019 322.12);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.45 0.085 224.283);
+  --primary: oklch(70.95% 0.151 262.07);
   --primary-foreground: oklch(0.984 0.019 200.873);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.263 0.024 320.12);
+  --muted: oklch(23.56% 0.02 267.8);
   --muted-foreground: oklch(0.711 0.019 323.02);
   --accent: oklch(0.263 0.024 320.12);
   --accent-foreground: oklch(0.985 0 0);
