@@ -30,10 +30,12 @@ function App() {
   return (
     <>
       <TooltipProvider>
-        <Header />
         <Shell>
           {!selectedImage ? (
-            <UploadPage handleSelectImage={handleSelectImage} />
+            <>
+              <Header />
+              <UploadPage handleSelectImage={handleSelectImage} />
+            </>
           ) : (
             <EditorPage
               handleClearImage={handleClearImage}

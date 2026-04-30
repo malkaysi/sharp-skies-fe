@@ -2,6 +2,7 @@ import { useState } from "react";
 import ImageWorkspace from "./features/image-workspace";
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
 import type { SharpenSettings } from "./types/image-editor";
+import Header from "./features/header";
 
 type ImageEditorProps = {
   imagePreviewUrl: string | null;
@@ -29,14 +30,17 @@ export default function ImageEditor({
   }
 
   return (
-    <div className="flex items-center justify-center h-full min-h-0">
-      <ImageWorkspace
-        imageSrc={imagePreviewUrl ?? ""}
-        fileName={selectedImage.name}
-        onBack={handleClearImage}
-        settings={settings}
-        onSettingChange={handleSettingChange}
-      />
-    </div>
+    <>
+      <Header onBack={handleClearImage} fileName={selectedImage.name} />
+      <div className="flex items-center justify-center h-full min-h-0">
+        <ImageWorkspace
+          imageSrc={imagePreviewUrl ?? ""}
+          fileName={selectedImage.name}
+          onBack={handleClearImage}
+          settings={settings}
+          onSettingChange={handleSettingChange}
+        />
+      </div>
+    </>
   );
 }
