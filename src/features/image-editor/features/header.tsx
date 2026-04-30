@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 
 type HeaderProps = {
   onBack: () => void;
@@ -8,8 +8,8 @@ type HeaderProps = {
 
 export default function Header({ onBack, fileName }: HeaderProps) {
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between px-4">
-      <div className="flex items-center gap-4">
+    <header className="flex h-14 shrink-0 items-center justify-between bg-card">
+      <div className="flex items-center gap-4 px-4">
         <Button
           onClick={onBack}
           variant="ghost"
@@ -19,12 +19,16 @@ export default function Header({ onBack, fileName }: HeaderProps) {
           Library
         </Button>
         <span
-          className="font-mono text-xs text-[#585e72] px-2.5 py-1 bg-[#1a1e28] rounded-md border border-[#1e2230]"
+          className="font-mono text-xs text-muted-foreground px-2.5 py-1 bg-muted rounded-md border border-primary/20"
           id="editor-filename"
         >
           {fileName}
         </span>
       </div>
+      <Button className="mr-4 text-muted text-sm bg-primary hover:bg-primary/90">
+        <Download className="mr-2" size={12} />
+        Export
+      </Button>
     </header>
   );
 }
