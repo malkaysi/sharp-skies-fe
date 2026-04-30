@@ -25,7 +25,10 @@ export default function Header({ onBack, fileName }: HeaderProps) {
           {fileName}
         </span>
       </div>
-      <Button className="mr-4 text-muted text-sm bg-primary hover:bg-primary/90">
+      <Button
+        size="sm"
+        className="mr-4 text-muted text-sm bg-primary hover:bg-primary/90"
+      >
         <Download className="mr-2" size={12} />
         Export
       </Button>
