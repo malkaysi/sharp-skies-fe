@@ -36,7 +36,6 @@ export default function ImageEditor({
         <ImageWorkspace
           imageSrc={imagePreviewUrl ?? ""}
           fileName={selectedImage.name}
-          onBack={handleClearImage}
           settings={settings}
           onSettingChange={handleSettingChange}
         />

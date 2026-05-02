@@ -12,7 +12,7 @@ export default function AdjustmentSliders({
   onSettingChange,
 }: AdjustmentSlidersProps) {
   return (
-    <div>
+    <div className="flex w-full max-w-85 flex-col gap-4 self-center justify-self-center rounded-2xl border border-muted/40 bg-background/80 p-4 shadow-sm">
       <div className="pb-2">
         <h4 className="text-sm font-semibold tracking-tight">Adjust Image</h4>
       </div>
