@@ -4,9 +4,16 @@ import { ArrowLeft, Download } from "lucide-react";
 type HeaderProps = {
   onBack: () => void;
   fileName: string;
+  onExport?: () => void;
+  hasProcessedImage: boolean;
 };
 
-export default function Header({ onBack, fileName }: HeaderProps) {
+export default function Header({
+  onBack,
+  fileName,
+  onExport,
+  hasProcessedImage,
+}: HeaderProps) {
   return (
     <header className="flex h-14 shrink-0 items-center justify-between bg-card">
       <div className="flex items-center gap-4 px-4">
@@ -28,6 +35,8 @@ export default function Header({ onBack, fileName }: HeaderProps) {
       <Button
         size="sm"
         className="mr-4 text-muted text-sm bg-primary hover:bg-primary/90"
+        onClick={onExport}
+        disabled={!hasProcessedImage}
       >
         <Download className="mr-2" size={12} />
         Export

@@ -13,9 +13,9 @@ export default function SliderTooltip({ description }: SliderTooltipProps) {
   return (
     <Tooltip>
       <TooltipTrigger>
-        <button className="text-muted-foreground">
+        <span className="text-muted-foreground">
           <Info className="h-3 w-3" />
-        </button>
+        </span>
       </TooltipTrigger>
       <TooltipContent className="max-w-xs text-xs">
         {description}
