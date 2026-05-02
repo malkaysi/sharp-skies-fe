@@ -80,15 +80,13 @@ export default function ImageEditor({
         onExport={handleDownload}
         hasProcessedImage={!!processedBlob}
       />
-      <div className="flex items-center justify-center h-full min-h-0">
-        <ImageWorkspace
-          imageSrc={processedImageUrl ?? imagePreviewUrl ?? ""}
-          settings={settings}
-          onSettingChange={handleSettingChange}
-          error={error}
-          isProcessing={isProcessing}
-        />
-      </div>
+      <ImageWorkspace
+        imageSrc={processedImageUrl ?? imagePreviewUrl ?? ""}
+        settings={settings}
+        onSettingChange={handleSettingChange}
+        error={error}
+        isProcessing={isProcessing}
+      />
     </>
   );
 }
