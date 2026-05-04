@@ -6,7 +6,7 @@ import Header from "./features/header";
 import { enhanceImage } from "./services/enhance";
 
 type ImageEditorProps = {
-  imagePreviewUrl: string | null;
+  imagePreviewUrl: string;
   selectedImage: File;
   handleClearImage: () => void;
 };
@@ -82,6 +82,8 @@ export default function ImageEditor({
       />
       <ImageWorkspace
         imageSrc={processedImageUrl ?? imagePreviewUrl ?? ""}
+        originalSrc={imagePreviewUrl}
+        hasProcessedImage={!!processedImageUrl}
         settings={settings}
         onSettingChange={handleSettingChange}
         error={error}

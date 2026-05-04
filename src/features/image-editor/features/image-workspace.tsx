@@ -11,6 +11,8 @@ type ImageWorkspaceProps = {
   ) => void;
   error: string | null;
   isProcessing: boolean;
+  originalSrc: string;
+  hasProcessedImage: boolean;
 };
 export default function ImageWorkspace({
   imageSrc,
@@ -18,11 +20,18 @@ export default function ImageWorkspace({
   onSettingChange,
   error,
   isProcessing,
+  originalSrc,
+  hasProcessedImage,
 }: ImageWorkspaceProps) {
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
       <div className="grid h-[calc(100vh-4rem)] grid-cols-1 gap-4 md:grid-cols-[3fr_1fr]">
-        <ProcessedImage imageSrc={imageSrc} isProcessing={isProcessing} />
+        <ProcessedImage
+          imageSrc={imageSrc}
+          isProcessing={isProcessing}
+          hasProcessedImage={hasProcessedImage}
+          originalSrc={originalSrc}
+        />
 
         <AdjustmentSliders
           settings={settings}
