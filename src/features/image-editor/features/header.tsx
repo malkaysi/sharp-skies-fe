@@ -15,7 +15,7 @@ export default function Header({
   hasProcessedImage,
 }: HeaderProps) {
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between bg-card">
+    <header className="flex h-14 shrink-0 items-center justify-between bg-card border-b border-border">
       <div className="flex items-center gap-4 px-4">
         <Button
           onClick={onBack}
