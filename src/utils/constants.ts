@@ -37,3 +37,10 @@ export const SHARPEN_SLIDER_CONFIG = {
     step: 0.05,
   },
 } as const;
+
+export const SHARPEN_PRESETS: Record<string, SharpenSettings> = {
+  Gentle: { sigma: 1.0, threshold: 12, amount: 0.4, blend: 0.4 },
+  Balanced: { sigma: 1.2, threshold: 8, amount: 0.8, blend: 0.5 },
+  Aggressive: { sigma: 1.5, threshold: 3, amount: 1.5, blend: 0.8 },
+  "Lunar Detail": { sigma: 0.8, threshold: 2, amount: 1.2, blend: 0.6 },
+};

@@ -1,6 +1,6 @@
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
-import AdjustmentSliders from "../components/adjustment-sliders";
 import ProcessedImage from "./processed-image";
+import SharpenPanel from "./sharpen-panel";
 
 type ImageWorkspaceProps = {
   imageSrc: string;
@@ -13,6 +13,7 @@ type ImageWorkspaceProps = {
   isProcessing: boolean;
   originalSrc: string;
   hasProcessedImage: boolean;
+  onReset: () => void;
 };
 export default function ImageWorkspace({
   imageSrc,
@@ -22,6 +23,7 @@ export default function ImageWorkspace({
   isProcessing,
   originalSrc,
   hasProcessedImage,
+  onReset,
 }: ImageWorkspaceProps) {
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
@@ -33,9 +35,10 @@ export default function ImageWorkspace({
           originalSrc={originalSrc}
         />
 
-        <AdjustmentSliders
+        <SharpenPanel
           settings={settings}
           onSettingChange={onSettingChange}
+          onReset={onReset}
         />
 
         {error && (

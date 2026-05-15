@@ -72,6 +72,11 @@ export default function ImageEditor({
     URL.revokeObjectURL(url);
   }
 
+  function handleReset() {
+    setSettings(DEFAULT_SHARPEN_SETTINGS);
+    setProcessedBlob(null);
+  }
+
   return (
     <>
       <Header
@@ -88,6 +93,7 @@ export default function ImageEditor({
         onSettingChange={handleSettingChange}
         error={error}
         isProcessing={isProcessing}
+        onReset={handleReset}
       />
     </>
   );
