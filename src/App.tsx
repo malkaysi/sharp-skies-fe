@@ -39,7 +39,7 @@ function App() {
           ) : (
             <EditorPage
               handleClearImage={handleClearImage}
-              imagePreviewUrl={imagePreviewUrl}
+              imagePreviewUrl={imagePreviewUrl ?? ""}
               selectedImage={selectedImage}
             />
           )}
