@@ -19,22 +19,26 @@ export default function SliderField({
   step = 1,
   onChange,
 }: SliderFieldProps) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
-          <p className="text-xs font-medium">{label}</p>
-          {description && <SliderTooltip description={description} />}
-        </div>
+  const fillPct = ((value - min) / (max - min)) * 100;
 
-        <span className="text-xs text-muted-foreground">
+  return (
+    <div className="px-5 py-3.5">
+      <div className="flex items-center justify-between mb-2.5">
+        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1.5">
+          {label}
+          {description && <SliderTooltip description={description} />}
+        </span>
+        <span className="font-mono text-xs font-medium min-w-10 text-right px-1.75 py-0.5 bg-muted rounded border border-border">
           {value.toFixed(2)}
         </span>
       </div>
-
-      <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
-        <span className="text-[11px] text-muted-foreground">{min}</span>
-
+      <div className="relative w-full h-7 flex items-center">
+        <div className="absolute left-0 right-0 h-1 bg-muted rounded-sm top-1/2 -translate-y-1/2 overflow-hidden">
+          <div
+            className="h-full bg-linear-to-r from-primary to-primary/70 rounded-sm"
+            style={{ width: `${fillPct}%` }}
+          />
+        </div>
         <input
           type="range"
           min={min}
@@ -42,10 +46,15 @@ export default function SliderField({
           step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full"
         />
-
-        <span className="text-[11px] text-muted-foreground">{max}</span>
+      </div>
+      <div className="flex justify-between mt-0.5">
+        <span className="font-mono text-[12px] text-muted-foreground/50">
+          {min}
+        </span>
+        <span className="font-mono text-[12px] text-muted-foreground/50">
+          {max}
+        </span>
       </div>
     </div>
   );
