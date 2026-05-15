@@ -2,7 +2,7 @@ import ImageEditor from "@/features/image-editor/image-editor";
 
 type EditorPageProps = {
   handleClearImage: () => void;
-  imagePreviewUrl: string | null;
+  imagePreviewUrl: string;
   selectedImage: File;
 };
 
