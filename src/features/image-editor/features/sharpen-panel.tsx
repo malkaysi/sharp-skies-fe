@@ -1,6 +1,6 @@
 import PresetChips from "../components/preset-chips";
 import AdjustmentSliders from "../components/adjustment-sliders";
-import type { SharpenSettings } from "../types/image-editor";
+import type { Mode, SharpenSettings } from "../types/image-editor";
 import { useState } from "react";
 import PanelHeader from "../components/panel-header";
 
@@ -9,8 +9,6 @@ type SharpenPanelProps = {
   onSettingChange: (key: keyof SharpenSettings, value: number) => void;
   onReset: () => void;
 };
-
-type Mode = "simple" | "wavelet";
 
 export default function SharpenPanel({
   settings,

@@ -1,6 +1,8 @@
+import type { Mode } from "../types/image-editor";
+
 type PanelHeaderProps = {
-  mode: "simple" | "wavelet";
-  onModeChange: (mode: "simple" | "wavelet") => void;
+  mode: Mode;
+  onModeChange: (mode: Mode) => void;
 };
 export default function PanelHeader({ mode, onModeChange }: PanelHeaderProps) {
   return (

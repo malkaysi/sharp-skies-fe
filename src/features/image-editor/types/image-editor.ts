@@ -4,3 +4,5 @@ export type SharpenSettings = {
   amount: number;
   blend: number;
 };
+
+export type Mode = "simple" | "wavelet";
