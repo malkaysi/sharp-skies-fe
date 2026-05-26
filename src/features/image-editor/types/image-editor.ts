@@ -6,3 +6,10 @@ export type SharpenSettings = {
 };
 
 export type Mode = "simple" | "wavelet";
+
+export type WaveletLayer = {
+  strength: number;
+  denoise: number;
+  clip: number;
+  blend: number;
+};
