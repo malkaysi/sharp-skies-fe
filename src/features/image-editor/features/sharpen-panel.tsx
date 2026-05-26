@@ -1,4 +1,8 @@
-import type { Mode, SharpenSettings } from "../types/image-editor";
+import type {
+  Mode,
+  SharpenSettings,
+  WaveletLayer,
+} from "../types/image-editor";
 import PanelHeader from "../components/panel-header";
 import SimpleMode from "./simple-mode";
 import WaveletMode from "./wavelet-mode";
@@ -9,6 +13,8 @@ type SharpenPanelProps = {
   onReset: () => void;
   mode: Mode;
   onModeChange: (mode: Mode) => void;
+  onWaveletApply: (layers: WaveletLayer[]) => void;
+  isProcessing: boolean;
 };
 
 export default function SharpenPanel({
@@ -17,6 +23,8 @@ export default function SharpenPanel({
   onReset,
   mode,
   onModeChange,
+  onWaveletApply,
+  isProcessing,
 }: SharpenPanelProps) {
   function handlePresetSelect(preset: SharpenSettings) {
     (Object.keys(preset) as (keyof SharpenSettings)[]).forEach((key) => {
@@ -35,7 +43,9 @@ export default function SharpenPanel({
           onReset={onReset}
         />
       )}
-      {mode === "wavelet" && <WaveletMode />}
+      {mode === "wavelet" && (
+        <WaveletMode onApply={onWaveletApply} isProcessing={isProcessing} />
+      )}
     </div>
   );
 }

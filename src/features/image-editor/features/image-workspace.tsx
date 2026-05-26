@@ -1,7 +1,7 @@
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
 import ProcessedImage from "./processed-image";
 import SharpenPanel from "./sharpen-panel";
-import type { Mode } from "../types/image-editor";
+import type { Mode, WaveletLayer } from "../types/image-editor";
 
 type ImageWorkspaceProps = {
   imageSrc: string;
@@ -17,6 +17,7 @@ type ImageWorkspaceProps = {
   onReset: () => void;
   mode: Mode;
   onModeChange: (mode: Mode) => void;
+  onWaveletApply: (layers: WaveletLayer[]) => void;
 };
 export default function ImageWorkspace({
   imageSrc,
@@ -29,6 +30,7 @@ export default function ImageWorkspace({
   onReset,
   mode,
   onModeChange,
+  onWaveletApply,
 }: ImageWorkspaceProps) {
   return (
     <div className="w-full max-w-full overflow-hidden rounded-2xl">
@@ -46,6 +48,8 @@ export default function ImageWorkspace({
           onReset={onReset}
           mode={mode}
           onModeChange={onModeChange}
+          isProcessing={isProcessing}
+          onWaveletApply={onWaveletApply}
         />
 
         {error && (
