@@ -10,28 +10,32 @@ export const DEFAULT_SHARPEN_SETTINGS: SharpenSettings = {
 export const SHARPEN_SLIDER_CONFIG = {
   amount: {
     label: "Sharpen Strength",
-    description: "How strong the sharpening effect is",
+    description:
+      "Controls how aggressively detail is enhanced. Start low and increase until edges look crisp without halos.",
     min: 0,
     max: 2,
     step: 0.05,
   },
   sigma: {
     label: "Detail Size",
-    description: "Small = fine details, Large = broader features",
+    description:
+      "Sets the scale of detail to sharpen. Lower values target fine texture like crater edges; higher values target broader surface features.",
     min: 0.5,
     max: 5,
     step: 0.1,
   },
   threshold: {
     label: "Noise Reduction",
-    description: "Higher values reduce sharpening of noise",
+    description:
+      "Ignores low-contrast areas like flat sky or sensor noise. Raise this if sharpening is making noisy regions look grainy.",
     min: 0,
     max: 30,
     step: 1,
   },
   blend: {
     label: "Blend",
-    description: "Mix between original and sharpened image",
+    description:
+      "Fades the sharpening result back into the original. Use this to dial back the overall effect without changing any other setting.",
     min: 0,
     max: 1,
     step: 0.05,
@@ -94,7 +98,7 @@ export const WAVELET_SLIDER_CONFIG = {
   strength: {
     label: "Strength",
     description:
-      "Multiplies detail at this scale. >1 sharpens, <1 softens, 1.0 leaves unchanged.",
+      "Amplifies or suppresses detail at this layer's scale. Above 1.0 sharpens, below 1.0 softens. 1.0 passes through unchanged.",
     min: 0,
     max: 3,
     step: 0.05,
@@ -102,7 +106,7 @@ export const WAVELET_SLIDER_CONFIG = {
   denoise: {
     label: "Denoise",
     description:
-      "Suppresses detail values below this threshold before sharpening. Prevents noise from being amplified. Most useful on L1 and L2.",
+      "Removes low-level noise before sharpening so it isn't amplified. Raise on L1–L2 if fine detail looks grainy after sharpening.",
     min: 0,
     max: 30,
     step: 0.5,
@@ -110,7 +114,7 @@ export const WAVELET_SLIDER_CONFIG = {
   clip: {
     label: "Clip",
     description:
-      "Caps maximum detail amplitude after sharpening. Prevents halos around bright stars. 0 = off.",
+      "Limits how bright sharpened edges can get. Useful for preventing white halos around stars or the lunar limb. 0 = off.",
     min: 0,
     max: 50,
     step: 0.5,
@@ -118,7 +122,7 @@ export const WAVELET_SLIDER_CONFIG = {
   blend: {
     label: "Blend",
     description:
-      "Mix between original and processed detail for this layer. 1.0 = fully processed, 0.0 = unchanged.",
+      "Fades between the original and processed detail for just this layer. Lets you apply other adjustments at partial strength.",
     min: 0,
     max: 1,
     step: 0.05,
