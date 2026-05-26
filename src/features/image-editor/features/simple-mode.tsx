@@ -22,7 +22,7 @@ export default function SimpleMode({
           onSettingChange={onSettingChange}
         />
       </div>
-      <div className="px-5 py-4 border-t border-border flex flex-col gap-2 shrink-0">
+      <div className="px-5 py-4 flex flex-col gap-2 shrink-0">
         <button
           onClick={onReset}
           className="w-full py-2 rounded-lg text-xs font-medium border border-border bg-transparent text-muted-foreground flex items-center justify-center gap-1.5 hover:text-foreground hover:bg-muted transition-all"
