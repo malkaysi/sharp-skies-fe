@@ -7,12 +7,12 @@ import ApplyButton from "../components/wavelet-mode/apply-button";
 import ResetButton from "../components/wavelet-mode/reset-button";
 
 const DEFAULT_WAVELET_LAYERS: WaveletLayer[] = [
-  { strength: 1.5, denoise: 0.0, clip: 0.0, blend: 1.0 },
-  { strength: 1.3, denoise: 0.0, clip: 0.0, blend: 1.0 },
-  { strength: 1.1, denoise: 0.0, clip: 0.0, blend: 1.0 },
-  { strength: 0.8, denoise: 0.0, clip: 0.0, blend: 1.0 },
-  { strength: 0.5, denoise: 0.0, clip: 0.0, blend: 1.0 },
-  { strength: 0.3, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
+  { strength: 1.0, denoise: 0.0, clip: 0.0, blend: 1.0 },
 ];
 
 type WaveletModeProps = {
