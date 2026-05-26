@@ -35,7 +35,7 @@ export default function WaveletMode() {
       <LayerStrengthBars
         layers={layers}
         activeLayer={activeLayer}
-        onSelect={setActiveLayer}
+        onSelect={(i) => setActiveLayer(i === activeLayer ? -1 : i)}
       />
       {layers.map((layer, i) => (
         <LayerCard
@@ -43,7 +43,7 @@ export default function WaveletMode() {
           index={i}
           layer={layer}
           isActive={i === activeLayer}
-          onSelect={() => setActiveLayer(i)}
+          onSelect={() => setActiveLayer(i === activeLayer ? -1 : i)}
           onChange={(key, value) => handleLayerChange(i, key, value)}
         />
       ))}
