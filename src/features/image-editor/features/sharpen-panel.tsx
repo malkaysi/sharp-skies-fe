@@ -1,5 +1,4 @@
 import type { Mode, SharpenSettings } from "../types/image-editor";
-import { useState } from "react";
 import PanelHeader from "../components/panel-header";
 import SimpleMode from "./simple-mode";
 import WaveletMode from "./wavelet-mode";
@@ -8,15 +7,17 @@ type SharpenPanelProps = {
   settings: SharpenSettings;
   onSettingChange: (key: keyof SharpenSettings, value: number) => void;
   onReset: () => void;
+  mode: Mode;
+  onModeChange: (mode: Mode) => void;
 };
 
 export default function SharpenPanel({
   settings,
   onSettingChange,
   onReset,
+  mode,
+  onModeChange,
 }: SharpenPanelProps) {
-  const [mode, setMode] = useState<Mode>("simple");
-
   function handlePresetSelect(preset: SharpenSettings) {
     (Object.keys(preset) as (keyof SharpenSettings)[]).forEach((key) => {
       onSettingChange(key, preset[key]);
@@ -25,7 +26,7 @@ export default function SharpenPanel({
 
   return (
     <div className="flex flex-col h-full bg-card border-l border-border overflow-hidden text-left">
-      <PanelHeader mode={mode} onModeChange={setMode} />
+      <PanelHeader mode={mode} onModeChange={onModeChange} />
       {mode === "simple" && (
         <SimpleMode
           settings={settings}

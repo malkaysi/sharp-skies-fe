@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import ImageWorkspace from "./features/image-workspace";
 import { DEFAULT_SHARPEN_SETTINGS } from "@/utils/constants";
-import type { SharpenSettings } from "./types/image-editor";
+import type { Mode, SharpenSettings } from "./types/image-editor";
 import Header from "./features/header";
 import { enhanceImage } from "./services/enhance";
 
@@ -22,6 +22,7 @@ export default function ImageEditor({
   const [processedBlob, setProcessedBlob] = useState<Blob | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useState<Mode>("simple");
 
   function handleSettingChange<K extends keyof SharpenSettings>(
     key: K,
@@ -86,14 +87,20 @@ export default function ImageEditor({
         hasProcessedImage={!!processedBlob}
       />
       <ImageWorkspace
-        imageSrc={processedImageUrl ?? imagePreviewUrl ?? ""}
+        imageSrc={
+          mode === "simple"
+            ? (processedImageUrl ?? imagePreviewUrl)
+            : imagePreviewUrl
+        }
         originalSrc={imagePreviewUrl}
-        hasProcessedImage={!!processedImageUrl}
+        hasProcessedImage={mode === "simple" ? !!processedImageUrl : false}
         settings={settings}
         onSettingChange={handleSettingChange}
         error={error}
         isProcessing={isProcessing}
         onReset={handleReset}
+        mode={mode}
+        onModeChange={setMode}
       />
     </>
   );
