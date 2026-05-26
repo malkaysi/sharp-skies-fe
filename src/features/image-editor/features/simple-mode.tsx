@@ -1,5 +1,5 @@
-import AdjustmentSliders from "../components/simple-slider/adjustment-sliders";
-import PresetChips from "../components/simple-slider/preset-chips";
+import AdjustmentSliders from "../components/simple-mode/adjustment-sliders";
+import PresetChips from "../components/simple-mode/preset-chips";
 import type { SharpenSettings } from "../types/image-editor";
 type SimpleModeProps = {
   settings: SharpenSettings;
