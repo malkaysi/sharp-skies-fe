@@ -44,3 +44,38 @@ export const SHARPEN_PRESETS: Record<string, SharpenSettings> = {
   Aggressive: { sigma: 1.5, threshold: 3, amount: 1.5, blend: 0.8 },
   "Lunar Detail": { sigma: 0.8, threshold: 2, amount: 1.2, blend: 0.6 },
 };
+
+export const WAVELET_SLIDER_CONFIG = {
+  strength: {
+    label: "Strength",
+    description:
+      "Multiplies detail at this scale. >1 sharpens, <1 softens, 1.0 leaves unchanged.",
+    min: 0,
+    max: 3,
+    step: 0.05,
+  },
+  denoise: {
+    label: "Denoise",
+    description:
+      "Suppresses detail values below this threshold before sharpening. Prevents noise from being amplified. Most useful on L1 and L2.",
+    min: 0,
+    max: 30,
+    step: 0.5,
+  },
+  clip: {
+    label: "Clip",
+    description:
+      "Caps maximum detail amplitude after sharpening. Prevents halos around bright stars. 0 = off.",
+    min: 0,
+    max: 50,
+    step: 0.5,
+  },
+  blend: {
+    label: "Blend",
+    description:
+      "Mix between original and processed detail for this layer. 1.0 = fully processed, 0.0 = unchanged.",
+    min: 0,
+    max: 1,
+    step: 0.05,
+  },
+} as const;
