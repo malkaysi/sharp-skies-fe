@@ -45,6 +45,15 @@ export const SHARPEN_PRESETS: Record<string, SharpenSettings> = {
   "Lunar Detail": { sigma: 0.8, threshold: 2, amount: 1.2, blend: 0.6 },
 };
 
+export const WAVELET_LAYER_META = [
+  { name: "Fine Detail", scale: "1 px" },
+  { name: "Micro Detail", scale: "2 px" },
+  { name: "Small Structures", scale: "4 px" },
+  { name: "Medium Structures", scale: "8 px" },
+  { name: "Large Structures", scale: "16 px" },
+  { name: "Coarse / Residual", scale: "32 px" },
+] as const;
+
 export const WAVELET_SLIDER_CONFIG = {
   strength: {
     label: "Strength",
