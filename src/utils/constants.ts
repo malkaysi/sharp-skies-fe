@@ -46,12 +46,48 @@ export const SHARPEN_PRESETS: Record<string, SharpenSettings> = {
 };
 
 export const WAVELET_LAYER_META = [
-  { name: "Fine Detail", scale: "1 px" },
-  { name: "Micro Detail", scale: "2 px" },
-  { name: "Small Structures", scale: "4 px" },
-  { name: "Medium Structures", scale: "8 px" },
-  { name: "Large Structures", scale: "16 px" },
-  { name: "Coarse / Residual", scale: "32 px" },
+  {
+    name: "Fine Detail",
+    scale: "1 px",
+    strengthMin: 0,
+    strengthMax: 3.0,
+    strengthStep: 0.05,
+  },
+  {
+    name: "Micro Detail",
+    scale: "2 px",
+    strengthMin: 0,
+    strengthMax: 3.0,
+    strengthStep: 0.05,
+  },
+  {
+    name: "Small Structures",
+    scale: "4 px",
+    strengthMin: 0,
+    strengthMax: 2.5,
+    strengthStep: 0.05,
+  },
+  {
+    name: "Medium Structures",
+    scale: "8 px",
+    strengthMin: 0,
+    strengthMax: 2.0,
+    strengthStep: 0.05,
+  },
+  {
+    name: "Large Structures",
+    scale: "16 px",
+    strengthMin: 0.5,
+    strengthMax: 1.5,
+    strengthStep: 0.01,
+  },
+  {
+    name: "Coarse / Residual",
+    scale: "32 px",
+    strengthMin: 0.5,
+    strengthMax: 1.5,
+    strengthStep: 0.01,
+  },
 ] as const;
 
 export const WAVELET_SLIDER_CONFIG = {

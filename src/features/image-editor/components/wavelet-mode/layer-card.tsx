@@ -52,9 +52,9 @@ export default function LayerCard({
                   key={key}
                   label={config.label}
                   description={config.description}
-                  min={config.min}
-                  max={config.max}
-                  step={config.step}
+                  min={key === "strength" ? meta.strengthMin : config.min}
+                  max={key === "strength" ? meta.strengthMax : config.max}
+                  step={key === "strength" ? meta.strengthStep : config.step}
                   value={layer[key]}
                   onChange={(value) => onChange(key, value)}
                 />
