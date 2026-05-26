@@ -1,5 +1,5 @@
 import { SHARPEN_PRESETS } from "@/utils/constants";
-import type { SharpenSettings } from "../types/image-editor";
+import type { SharpenSettings } from "../../types/image-editor";
 
 type PresetChipsProps = {
   settings: SharpenSettings;
