@@ -1,46 +1,47 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import Header from "./components/ui/layout/header/header";
 import Shell from "./components/ui/layout/shell";
 import { TooltipProvider } from "./components/ui/tooltip";
-import UploadPage from "./pages/upload-page/upload-page";
-import EditorPage from "./pages/editor-page/editor-page";
+import type { Workflow } from "./features/workflow-toggle/types";
+import ProcessPage from "./pages/process/process-page";
+import WorkflowPage from "./pages/workflow/workflow";
+import StackPage from "./pages/stack/stack";
 
 function App() {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [workflow, setWorkflow] = useState<Workflow>("Process");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
 
-  const imagePreviewUrl = useMemo(() => {
-    return selectedImage ? URL.createObjectURL(selectedImage) : null;
-  }, [selectedImage]);
-
-  useEffect(() => {
-    return () => {
-      if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
-    };
-  }, [imagePreviewUrl]);
-
-  function handleSelectImage(file: File) {
-    setSelectedImage(file);
+  function handleSelectFile(file: File) {
+    setSelectedFile(file);
+    if (workflow === "Process") {
+      setImagePreviewUrl(URL.createObjectURL(file));
+    }
   }
 
-  function handleClearImage() {
-    setSelectedImage(null);
+  function handleClearFile() {
+    if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+    setImagePreviewUrl(null);
+    setSelectedFile(null);
   }
 
   return (
     <>
       <TooltipProvider>
         <Shell>
-          {!selectedImage ? (
-            <>
-              <Header />
-              <UploadPage handleSelectImage={handleSelectImage} />
-            </>
+          {!selectedFile ? (
+            <WorkflowPage
+              workflow={workflow}
+              onWorkflowChange={setWorkflow}
+              onSelectFile={handleSelectFile}
+            />
+          ) : workflow === "Stack" ? (
+            <StackPage />
           ) : (
-            <EditorPage
-              handleClearImage={handleClearImage}
+            <ProcessPage
+              selectedImage={selectedFile}
+              onClear={handleClearFile}
               imagePreviewUrl={imagePreviewUrl ?? ""}
-              selectedImage={selectedImage}
             />
           )}
         </Shell>

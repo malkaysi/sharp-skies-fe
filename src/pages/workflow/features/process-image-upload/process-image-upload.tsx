@@ -1,9 +1,11 @@
 import ImageUpload from "@/features/image-upload/image-upload";
 
-type UploadPageProps = {
+type ProcessImageUploadProps = {
   handleSelectImage: (file: File) => void;
 };
 
-export default function UploadPage({ handleSelectImage }: UploadPageProps) {
+export default function ProcessImageUpload({
+  handleSelectImage,
+}: ProcessImageUploadProps) {
   return <ImageUpload handleSelectImage={handleSelectImage} />;
 }
