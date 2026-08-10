@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import SliderField from "../slider-field";
+import SliderField from "../../../../components/ui/slider/slider-field";
 import { WAVELET_LAYER_META, WAVELET_SLIDER_CONFIG } from "@/utils/constants";
 import type { WaveletLayer } from "../../types/image-editor";
 
