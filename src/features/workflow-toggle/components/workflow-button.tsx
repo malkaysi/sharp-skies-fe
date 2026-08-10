@@ -1,5 +1,5 @@
 import { Layers, Sun, type LucideIcon } from "lucide-react";
-import type { Workflow } from "../features/workflow-toggle";
+import type { Workflow } from "../types";
 
 const config: Record<Workflow, { label: string; icon: LucideIcon }> = {
   Process: { label: "Process", icon: Sun },

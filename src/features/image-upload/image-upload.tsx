@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DropZone from "./features/drop-zone";
-import WorkflowToggle, { type Workflow } from "./features/workflow-toggle";
+import WorkflowToggle from "../workflow-toggle/workflow-toggle";
+import type { Workflow } from "../workflow-toggle/types";
 
 type ImageUploadProps = {
   handleSelectImage: (file: File) => void;
