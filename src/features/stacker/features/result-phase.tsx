@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Download } from "lucide-react";
+import ResultHeader from "../components/result-header";
 import type { StackResult } from "../types/stacker";
 
 type ResultPhaseProps = {
@@ -19,29 +18,11 @@ export default function ResultPhase({
 }: ResultPhaseProps) {
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex h-13 shrink-0 items-center justify-between border-b border-border bg-card px-6">
-        <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onBack}
-            className="gap-1.5"
-          >
-            <ArrowLeft size={16} />
-            Library
-          </Button>
-          <span className="rounded-md border border-border bg-muted px-2.5 py-1 font-mono text-xs text-muted-foreground">
-            {fileName}
-          </span>
-          <span className="rounded-md border border-emerald-500/15 bg-emerald-500/10 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">
-            Stacking complete
-          </span>
-        </div>
-        <Button size="sm" onClick={onDownload} className="gap-1.5">
-          <Download size={14} />
-          Download
-        </Button>
-      </div>
+      <ResultHeader
+        fileName={fileName}
+        onBack={onBack}
+        onDownload={onDownload}
+      />
 
       <div className="grid flex-1 grid-cols-1 gap-4 overflow-hidden p-6 md:grid-cols-[3fr_1fr]">
         <div className="flex items-center justify-center overflow-hidden rounded-2xl border border-border bg-card">

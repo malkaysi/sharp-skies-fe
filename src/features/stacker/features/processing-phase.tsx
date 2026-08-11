@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+import ProcessingHeader from "../components/processing-header";
 
 type ProcessingPhaseProps = {
   fileName: string;
@@ -20,20 +20,7 @@ export default function ProcessingPhase({
 
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex h-13 shrink-0 items-center justify-between border-b border-border bg-card px-6">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
-            <span className="text-[13px] font-semibold">Processing</span>
-          </div>
-          <span className="rounded-md border border-border bg-muted px-2.5 py-1 font-mono text-xs text-muted-foreground">
-            {fileName}
-          </span>
-        </div>
-        <Button variant="ghost" size="sm" onClick={onCancel}>
-          Cancel
-        </Button>
-      </div>
+      <ProcessingHeader fileName={fileName} onCancel={onCancel} />
 
       <div className="flex flex-1 flex-col items-center justify-center gap-3">
         <p className="font-mono text-sm text-muted-foreground">
