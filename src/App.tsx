@@ -4,8 +4,8 @@ import Shell from "./components/ui/layout/shell";
 import { TooltipProvider } from "./components/ui/tooltip";
 import type { Workflow } from "./features/workflow-toggle/types";
 import ProcessPage from "./pages/process-page";
-import WorkflowPage from "./pages/workflow";
-import StackPage from "./pages/stack/stack";
+import WorkflowPage from "./pages/workflow-page";
+import StackPage from "./pages/stack-page";
 
 function App() {
   const [workflow, setWorkflow] = useState<Workflow>("Process");
