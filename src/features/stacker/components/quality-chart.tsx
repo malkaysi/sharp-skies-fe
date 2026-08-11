@@ -5,6 +5,7 @@ type QualityChartProps = {
 };
 
 const BAR_COUNT = 48;
+const FLAT_HEIGHT = 0.55;
 
 function hashString(str: string): number {
   let hash = 0;
@@ -23,8 +24,10 @@ function mulberry32(seed: number) {
   };
 }
 
-function generateBars(seed: number): number[] {
-  const random = mulberry32(seed);
+function generateBars(random: () => number, isResult: boolean): number[] {
+  if (!isResult) {
+    return Array.from({ length: BAR_COUNT }, () => FLAT_HEIGHT);
+  }
   return Array.from({ length: BAR_COUNT }, (_, i) => {
     const t = i / BAR_COUNT;
     const base = Math.pow(1 - t, 1.3) * 0.82 + 0.1;
@@ -35,29 +38,51 @@ function generateBars(seed: number): number[] {
 
 export default function QualityChart({ cutoffPercent }: QualityChartProps) {
   const id = useId();
-  const bars = useMemo(() => generateBars(hashString(id)), [id]);
+  const isResult = cutoffPercent !== undefined;
 
-  const cutoffIndex =
-    cutoffPercent !== undefined
-      ? Math.round((BAR_COUNT * cutoffPercent) / 100)
-      : null;
+  const { bars, shimmerTiming } = useMemo(() => {
+    const random = mulberry32(hashString(id));
+    const bars = generateBars(random, isResult);
+    const shimmerTiming = bars.map(() => ({
+      duration: 0.9 + random() * 0.9,
+      delay: random() * 1.2,
+    }));
+    return { bars, shimmerTiming };
+  }, [id, isResult]);
+
+  const cutoffIndex = isResult
+    ? Math.round((BAR_COUNT * cutoffPercent!) / 100)
+    : null;
 
   return (
     <div className="px-6 py-5">
+      <style>{`
+        @keyframes quality-shimmer {
+          0%, 100% { transform: scaleY(1); }
+          50% { transform: scaleY(0.88); }
+        }
+      `}</style>
       <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
         Frame Quality
       </span>
       <div className="relative mt-3 flex h-15 items-end gap-px">
         {bars.map((v, i) => (
-          <div
-            key={i}
-            className={`flex-1 rounded-t-sm ${
-              cutoffIndex !== null && i >= cutoffIndex
-                ? "bg-muted"
-                : "bg-primary"
-            }`}
-            style={{ height: `${v * 100}%` }}
-          />
+          <div key={i} className="flex-1" style={{ height: `${v * 100}%` }}>
+            <div
+              className={`h-full w-full origin-bottom rounded-t-sm ${
+                cutoffIndex !== null && i >= cutoffIndex
+                  ? "bg-muted"
+                  : "bg-primary"
+              }`}
+              style={{
+                animationName: "quality-shimmer",
+                animationDuration: `${shimmerTiming[i].duration}s`,
+                animationDelay: `${shimmerTiming[i].delay}s`,
+                animationTimingFunction: "ease-in-out",
+                animationIterationCount: "infinite",
+              }}
+            />
+          </div>
         ))}
         {cutoffIndex !== null && (
           <div
@@ -75,8 +100,8 @@ export default function QualityChart({ cutoffPercent }: QualityChartProps) {
         </span>
       </div>
       <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground/70">
-        Illustrative — live per-frame scores aren't available until stacking
-        completes.
+        Per-frame scores are being analyzed to determine the best frames for
+        stacking.
       </p>
     </div>
   );
