@@ -36,7 +36,7 @@ function App() {
               onSelectFile={handleSelectFile}
             />
           ) : workflow === "Stack" ? (
-            <StackPage />
+            <StackPage selectedVideo={selectedFile} onClear={handleClearFile} />
           ) : (
             <ProcessPage
               selectedImage={selectedFile}
