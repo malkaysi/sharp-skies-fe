@@ -93,6 +93,7 @@ export default function Stacker({ selectedVideo, onClear }: StackerProps) {
         fileName={selectedVideo.name}
         result={result}
         imageUrl={imageUrl}
+        mode={DEFAULT_STACK_SETTINGS.mode}
         onBack={handleBack}
         onDownload={handleDownload}
       />
