@@ -1,7 +1,7 @@
 import Header from "@/components/ui/layout/header/header";
 import type { Workflow } from "@/features/workflow-toggle/types";
 import WorkflowToggle from "@/features/workflow-toggle/workflow-toggle";
-import ProcessImageUpload from "./features/process-image-upload/process-image-upload";
+import ImageUpload from "@/features/image-upload/image-upload";
 
 type WorkflowPageProps = {
   workflow: Workflow;
@@ -25,7 +25,7 @@ export default function WorkflowPage({
       {workflow === "Stack" ? (
         <div>Stack drop-zone goes</div>
       ) : (
-        <ProcessImageUpload handleSelectImage={onSelectFile} />
+        <ImageUpload handleSelectImage={onSelectFile} />
       )}
     </>
   );

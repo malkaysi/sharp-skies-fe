@@ -3,8 +3,8 @@ import "./App.css";
 import Shell from "./components/ui/layout/shell";
 import { TooltipProvider } from "./components/ui/tooltip";
 import type { Workflow } from "./features/workflow-toggle/types";
-import ProcessPage from "./pages/process/process-page";
-import WorkflowPage from "./pages/workflow/workflow";
+import ProcessPage from "./pages/process-page";
+import WorkflowPage from "./pages/workflow";
 import StackPage from "./pages/stack/stack";
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
           ) : (
             <ProcessPage
               selectedImage={selectedFile}
-              onClear={handleClearFile}
+              handleClearImage={handleClearFile}
               imagePreviewUrl={imagePreviewUrl ?? ""}
             />
           )}
