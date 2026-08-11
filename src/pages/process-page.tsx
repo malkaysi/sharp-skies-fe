@@ -1,16 +1,16 @@
 import ImageEditor from "@/features/image-editor/image-editor";
 
-type EditorPageProps = {
+type ProcessPageProps = {
+  selectedImage: File;
   handleClearImage: () => void;
   imagePreviewUrl: string;
-  selectedImage: File;
 };
 
-export default function EditorPage({
+export default function ProcessPage({
+  selectedImage,
   handleClearImage,
   imagePreviewUrl,
-  selectedImage,
-}: EditorPageProps) {
+}: ProcessPageProps) {
   return (
     <>
       <ImageEditor

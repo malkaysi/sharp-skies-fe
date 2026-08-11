@@ -1,6 +1,6 @@
 import { SHARPEN_SLIDER_CONFIG } from "@/utils/constants";
 import type { SharpenSettings } from "../../types/image-editor";
-import SliderField from "../slider-field";
+import SliderField from "../../../../components/ui/slider/slider-field";
 
 type AdjustmentSlidersProps = {
   settings: SharpenSettings;
