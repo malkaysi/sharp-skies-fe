@@ -9,6 +9,12 @@ type ResultPhaseProps = {
   mode: FrameSelectionMode;
   onBack: () => void;
   onDownload: () => void;
+  onEnhance: () => void;
+  onRemoveBackgroundGlow: () => void;
+  onRevertBackgroundGlow: () => void;
+  isRemovingGlow: boolean;
+  isGlowRemoved: boolean;
+  glowError: string | null;
 };
 
 export default function ResultPhase({
@@ -18,6 +24,12 @@ export default function ResultPhase({
   mode,
   onBack,
   onDownload,
+  onEnhance,
+  onRemoveBackgroundGlow,
+  onRevertBackgroundGlow,
+  isRemovingGlow,
+  isGlowRemoved,
+  glowError,
 }: ResultPhaseProps) {
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
@@ -37,7 +49,17 @@ export default function ResultPhase({
           </div>
         </div>
 
-        <ResultSidebar result={result} mode={mode} />
+        <ResultSidebar
+          result={result}
+          mode={mode}
+          onDownload={onDownload}
+          onEnhance={onEnhance}
+          onRemoveBackgroundGlow={onRemoveBackgroundGlow}
+          onRevertBackgroundGlow={onRevertBackgroundGlow}
+          isRemovingGlow={isRemovingGlow}
+          isGlowRemoved={isGlowRemoved}
+          glowError={glowError}
+        />
       </div>
     </div>
   );

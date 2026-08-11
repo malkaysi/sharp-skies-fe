@@ -25,6 +25,13 @@ function App() {
     setSelectedFile(null);
   }
 
+  function handleProceedToEnhance(file: File) {
+    if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+    setImagePreviewUrl(URL.createObjectURL(file));
+    setSelectedFile(file);
+    setWorkflow("Process");
+  }
+
   return (
     <>
       <TooltipProvider>
@@ -36,7 +43,11 @@ function App() {
               onSelectFile={handleSelectFile}
             />
           ) : workflow === "Stack" ? (
-            <StackPage selectedVideo={selectedFile} onClear={handleClearFile} />
+            <StackPage
+              selectedVideo={selectedFile}
+              onClear={handleClearFile}
+              onProceedToEnhance={handleProceedToEnhance}
+            />
           ) : (
             <ProcessPage
               selectedImage={selectedFile}

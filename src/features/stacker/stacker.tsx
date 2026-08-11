@@ -8,18 +8,28 @@ import type { StackerPhase, StackResult } from "./types/stacker";
 import ProcessingPhase from "./features/processing-phase/processing-phase";
 import ResultPhase from "./features/result-phase/result-phase";
 import { stackVideo } from "./services/stackVideo";
+import { removeBackgroundGlow } from "./services/removeBackgroundGlow";
 
 type StackerProps = {
   selectedVideo: File;
   onClear: () => void;
+  onProceedToEnhance: (file: File) => void;
 };
 
-export default function Stacker({ selectedVideo, onClear }: StackerProps) {
+export default function Stacker({
+  selectedVideo,
+  onClear,
+  onProceedToEnhance,
+}: StackerProps) {
   const [phase, setPhase] = useState<StackerPhase>("processing");
   const [result, setResult] = useState<StackResult | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [fetchDone, setFetchDone] = useState(false);
+  const [isRemovingGlow, setIsRemovingGlow] = useState(false);
+  const [glowError, setGlowError] = useState<string | null>(null);
+  const [glowRemovedBlob, setGlowRemovedBlob] = useState<Blob | null>(null);
+  const [glowRemovedUrl, setGlowRemovedUrl] = useState<string | null>(null);
 
   useEffect(() => {
     let ignore = false;
@@ -61,9 +71,12 @@ export default function Stacker({ selectedVideo, onClear }: StackerProps) {
     };
   }, [selectedVideo]);
 
+  const displayedBlob = glowRemovedBlob ?? result?.imageBlob ?? null;
+  const displayedImageUrl = glowRemovedUrl ?? imageUrl;
+
   function handleDownload() {
-    if (!result) return;
-    const url = URL.createObjectURL(result.imageBlob);
+    if (!displayedBlob) return;
+    const url = URL.createObjectURL(displayedBlob);
     const a = document.createElement("a");
     a.href = url;
     a.download = `${selectedVideo.name.replace(/\.[^.]+$/, "")}_stacked.png`;
@@ -73,7 +86,44 @@ export default function Stacker({ selectedVideo, onClear }: StackerProps) {
 
   function handleBack() {
     if (imageUrl) URL.revokeObjectURL(imageUrl);
+    if (glowRemovedUrl) URL.revokeObjectURL(glowRemovedUrl);
     onClear();
+  }
+
+  function handleEnhance() {
+    if (!displayedBlob) return;
+    const file = new File(
+      [displayedBlob],
+      `${selectedVideo.name.replace(/\.[^.]+$/, "")}_stacked.png`,
+      { type: "image/png" },
+    );
+    if (imageUrl) URL.revokeObjectURL(imageUrl);
+    if (glowRemovedUrl) URL.revokeObjectURL(glowRemovedUrl);
+    onProceedToEnhance(file);
+  }
+
+  async function handleRemoveBackgroundGlow() {
+    if (!result) return;
+    setIsRemovingGlow(true);
+    setGlowError(null);
+    try {
+      const newBlob = await removeBackgroundGlow(result.imageBlob);
+      setGlowRemovedBlob(newBlob);
+      setGlowRemovedUrl(URL.createObjectURL(newBlob));
+    } catch (err) {
+      setGlowError(
+        err instanceof Error ? err.message : "Failed to remove background glow",
+      );
+    } finally {
+      setIsRemovingGlow(false);
+    }
+  }
+
+  function handleRevertBackgroundGlow() {
+    if (glowRemovedUrl) URL.revokeObjectURL(glowRemovedUrl);
+    setGlowRemovedUrl(null);
+    setGlowRemovedBlob(null);
+    setGlowError(null);
   }
 
   if (error) {
@@ -87,15 +137,21 @@ export default function Stacker({ selectedVideo, onClear }: StackerProps) {
     );
   }
 
-  if (phase === "result" && result && imageUrl) {
+  if (phase === "result" && result && displayedImageUrl) {
     return (
       <ResultPhase
         fileName={selectedVideo.name}
         result={result}
-        imageUrl={imageUrl}
+        imageUrl={displayedImageUrl}
         mode={DEFAULT_STACK_SETTINGS.mode}
         onBack={handleBack}
         onDownload={handleDownload}
+        onEnhance={handleEnhance}
+        onRemoveBackgroundGlow={handleRemoveBackgroundGlow}
+        onRevertBackgroundGlow={handleRevertBackgroundGlow}
+        isRemovingGlow={isRemovingGlow}
+        isGlowRemoved={glowRemovedUrl !== null}
+        glowError={glowError}
       />
     );
   }
