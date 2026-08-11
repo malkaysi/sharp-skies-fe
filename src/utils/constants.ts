@@ -1,4 +1,5 @@
 import type { SharpenSettings } from "@/features/image-editor/types/image-editor";
+import type { StackSettings } from "@/features/stacker/types/stacker";
 
 export const DEFAULT_SHARPEN_SETTINGS: SharpenSettings = {
   sigma: 1.2,
@@ -128,3 +129,9 @@ export const WAVELET_SLIDER_CONFIG = {
     step: 0.05,
   },
 } as const;
+
+export const DEFAULT_STACK_SETTINGS: StackSettings = {
+  mode: "auto",
+  topPercent: 50,
+};
+export const STACK_MIN_SIMULATED_DURATION_MS = 3000;
