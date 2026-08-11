@@ -29,12 +29,9 @@ export default function ProcessingPhase({
 
       <div className="flex flex-1 overflow-hidden">
         <div className="flex flex-1 flex-col items-center justify-center gap-5">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Extracted Frames
-          </span>
           <FrameGrid />
           <span className="font-mono text-[11px] text-muted-foreground">
-            Extracting frames…
+            Extracting, scoring, and stacking frames…
           </span>
         </div>
 
