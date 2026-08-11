@@ -49,13 +49,11 @@ export default function ProcessingPhase({
           <div className="border-t border-border" />
 
           <div className="px-6 py-5">
-            <div className="rounded-[10px] border border-border bg-muted p-3">
-              <div className="mb-1.5 font-mono text-[10px] text-muted-foreground">
-                Elapsed
-              </div>
-              <div className="font-mono text-xl font-bold">
-                {(elapsedMs / 1000).toFixed(1)}s
-              </div>
+            <div className="mb-1.5 font-mono text-[10px] text-muted-foreground">
+              Elapsed
+            </div>
+            <div className="font-mono text-xl font-bold">
+              {(elapsedMs / 1000).toFixed(1)}s
             </div>
           </div>
         </div>
