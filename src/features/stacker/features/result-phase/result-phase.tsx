@@ -1,5 +1,5 @@
-import ResultHeader from "../components/result-header";
-import type { StackResult } from "../types/stacker";
+import ResultHeader from "./components/result-header";
+import type { StackResult } from "../../types/stacker";
 
 type ResultPhaseProps = {
   fileName: string;

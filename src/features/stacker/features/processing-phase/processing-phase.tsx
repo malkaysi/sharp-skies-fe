@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import ProcessingHeader from "../components/processing-header";
-import PipelineSteps from "../components/pipeline-steps";
-import FrameGrid from "../components/frame-grid";
-import QualityChart from "../components/quality-chart";
+import ProcessingHeader from "./components/processing-header";
+import PipelineSteps from "./components/pipeline-steps";
+import FrameGrid from "./components/frame-grid";
+import QualityChart from "./components/quality-chart";
 
 type ProcessingPhaseProps = {
   fileName: string;

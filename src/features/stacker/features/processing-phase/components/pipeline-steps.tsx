@@ -58,7 +58,7 @@ export default function PipelineSteps({ fetchDone }: PipelineStepsProps) {
             >
               {state === "done" ? <Check size={14} /> : <Icon size={14} />}
             </div>
-            <div className="flex-1">
+            <div className="flex-1 text-center">
               <div
                 className={`text-xs font-semibold ${
                   state === "pending" ? "text-muted-foreground/40" : ""
@@ -70,9 +70,11 @@ export default function PipelineSteps({ fetchDone }: PipelineStepsProps) {
                 {state === "pending" ? "—" : step.detail}
               </div>
             </div>
-            {state === "active" && (
-              <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-primary" />
-            )}
+            <div
+              className={`h-2 w-2 shrink-0 rounded-full bg-primary transition-opacity ${
+                state === "active" ? "animate-pulse opacity-100" : "opacity-0"
+              }`}
+            />
           </div>
         );
       })}

@@ -5,8 +5,8 @@ import {
   STACK_MIN_SIMULATED_DURATION_MS,
 } from "@/utils/constants";
 import type { StackerPhase, StackResult } from "./types/stacker";
-import ProcessingPhase from "./features/processing-phase";
-import ResultPhase from "./features/result-phase";
+import ProcessingPhase from "./features/processing-phase/processing-phase";
+import ResultPhase from "./features/result-phase/result-phase";
 import { stackVideo } from "./services/stackVideo";
 
 type StackerProps = {
