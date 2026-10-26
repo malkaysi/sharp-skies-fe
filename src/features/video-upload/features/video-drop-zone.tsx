@@ -5,8 +5,8 @@ type VideoDropZoneProps = {
   handleSelectVideo: (file: File) => void;
 };
 
-const FORMAT_TAGS = [".avi", ".ser", ".mov"];
-const ACCEPTED_EXTENSIONS = /\.(avi|ser|mov)$/i;
+const FORMAT_TAGS = [".avi", ".ser", ".mov", ".mp4"];
+const ACCEPTED_EXTENSIONS = /\.(avi|ser|mov|mp4)$/i;
 const MAX_FILE_SIZE = 4 * 1024 * 1024 * 1024;
 
 export default function VideoDropZone({
@@ -108,7 +108,7 @@ export default function VideoDropZone({
       <input
         type="file"
         id="video-file-input"
-        accept=".avi,.ser,.mov"
+        accept=".avi,.ser,.mov,.mp4"
         onChange={handleFileUpload}
         className="hidden"
       />
